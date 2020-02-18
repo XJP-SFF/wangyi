@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div id="appContainer">
+    <!--公共头部分-->
+    <HeaderTab/>
+    <router-view></router-view>
+    <FooterGuide/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HeaderTab from './components/header_common/headerTab'
+import FooterGuide from './components/footer_guide/footerGuide'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+    components:{
+    FooterGuide,
+    HeaderTab
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus">
+page 
+  width 100%
+  height 100%
+
+	/*每个页面公共css */
+	//@import url("./static/stylus/iconfont/iconfont.styl");
+  // 
 </style>
