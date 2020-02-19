@@ -1,16 +1,37 @@
 <template>
-	<view class="loginContainer">
-		<image class="logo" src="http://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png" mode=""></image>
-		<p class='text'>网易自营，精品生活家居品牌</p>
-		<div class="loginMethods">
-			<button class="login wechatLogin">
-				微信登录
-			</button>
-			<button class="login emailLogin">
-				邮箱登录
-			</button>
+	<div id="loginContainer">
+		<!-- 头部 -->
+		<div id="login-header">
+			<i class="iconfont icon-shouye"></i>
+			<img class="logoImg" src="../../common/images/logo.png"/>
+			<i class="iconfont icon-search"></i>
+			<i class="iconfont icon-cart-Empty"></i>
 		</div>
-	</view>
+		<img class="logo" src="http://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png"/>
+		<div class="loginMethods">
+			<div class="login">
+				<div class="phone">
+					<i class="iconfont icon-shouji1"></i>
+					<span>手机号快捷登录</span>
+				</div>
+				<div class="email">
+					<i class="iconfont icon-youxiang2"></i>
+					<span>邮箱账号登录</span>
+				</div>
+			</div>
+		</div>
+		<!-- 登录方式 -->
+		<div class="loginWays">
+			<i class="iconfont icon-weixinhover"></i>
+			<span class="word">微信</span>
+			<span class="interval">|</span>
+			<i class="iconfont icon-qq"></i>
+			<span class="word">QQ</span>
+			<span class="interval">|</span>
+			<i class="iconfont icon-sinaweibo"></i>
+			<span class="word">微博</span>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -24,33 +45,67 @@
 </script>
 
 <style lang="stylus">
-	.loginContainer
+	#loginContainer
 		width 100%
 		height 100%
 		background #F8F8F8
 		display flex
 		align-items center
 		flex-direction column
+		//头部
+		#login-header
+			width 100%
+			height 88px
+			background-color #fff
+			text-align center
+			// line-height 88px
+			.logoImg
+				width 138px
+				height 56px
+				padding-left 280px
+			.iconfont
+				font-size 60px
+				&:nth-child(1)
+					float left
+					line-height 88px
+					padding-left 10px
+				&:nth-child(2),&:nth-child(3)
+					padding-left 200px
+					font-size 70px
+					line-height 88px
+				&:nth-child(3)	
+					padding-right 10px
 		.logo
-			width 300upx
-			height 100upx
-			margin-top 200upx
-		.text
-			font-size 26upx
-			color #666
+			width 300px
+			height 100px
+			margin-top 200px
 		.loginMethods
-			width 80%
-			margin 150upx auto
-			display flex
-			justify-content space-around
+			width 100%
 			.login
-				width 240upx
-				height 80upx
-				background #41A863
-				color #FFFFFF
-				text-align center
-				line-height 80upx
-				font-size 26upx
-			
+				margin 280px auto 400px
+				.phone
+					width 80%
+					margin 0 10%
+					height 100px
+					line-height 100px
+					text-align center
+					background-color red
+				.email
+					width 80%
+					margin 50px 10%
+					height 100px
+					line-height 100px
+					text-align center
+					box-sizing border-box
+					border 1px solid red
+		.loginWays
+			height 250px
+			line-height 300px
+			.interval
+				font-size 40px
+				margin 0 20px	
+			.iconfont
+				font-size 50px
+
 
 </style>

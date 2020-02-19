@@ -1,13 +1,26 @@
 <template>
 	<div id='categoryContainer'>
 		<div class="header">
-			<div class='headerBg'></div>
-			<span>搜索商品</span>
+			<div class='headerBg'>
+				<i class="iconfont icon-sousuo"></i>
+				<span>搜索商品</span>
+			</div>
 		</div>
-		
 		<div class="content">
 			<div class="left">
-				左边
+				<ul>
+					<li>推荐专区</li>
+					<li>推荐专区</li>
+					<li>推荐专区</li>
+					<li>推荐专区</li>
+					<li>推荐专区</li>
+					<li>推荐专区</li>
+					<li>gghfjdhg</li>
+					<li>gghfjdhg</li>
+					<li>gghfjdhg</li>
+					<li>gghfjdhg</li>
+					<li>gghfjdhg</li>
+				</ul>
 			</div>
 			<div class="right" >
 				右边
@@ -22,85 +35,48 @@
 	}
 </script>
 
-<style lang="stylus">
-	
+<style lang="stylus">	
 	#categoryContainer
-		.header 
+		width 100%
+		.header
 			width 100%
-			height 56rpx
-			position relative
-			padding 20rpx 0
-			.headerBg 
-				width 90%
-				height 56rpx
-				background #EDEDED
-				margin auto
-				border-radius 10rpx 
-			span 
-				position absolute
-				text-align center 
-				height 56rpx 
-				line-height 56rpx
-				left 0
-				top 20rpx
-				width 100%
-				font-size 24rpx
-		.content 
-			border-top 1rpx solid #eee 
-			display flex 
+			height 88px
+			box-sizing border-box
+			padding 0 30px
+			border-bottom 1px solid #eee
+			background-color #fff
+			.headerBg
+				margin-left 60px
+				margin-top 16px
+				background-color #eeeeee
+				width 690px
+				height 56px
+				line-height 56px
+				text-align center
+				border-radius 10px
+				i
+					margin-right 20px
+		.content
 			width 100%
-			.left 
-				width 20%
-				border-right 1rpx solid #eee
-				font-size 28upx
+			height 1250px
+			display flex
+			.left
+				width 160px
 				box-sizing border-box
-				.scrollContainer 
-					height calc(100vh - 96rpx) /* 1vh = 屏幕高度的百分之一 */
-					::-webkit-scrollbar  /* 去除默认滚动条样式的 */
-						width 0
-					.navList 
-						li 
-							height 80rpx
-							line-height 80rpx
-							text-align center
-							margin 10rpx 0
-							&.active
-								color #B4282D
-								position relative
-								&:after
-									content ''
-									height 70%
-									width 2rpx 
-									background #B4282D
-									position absolute
-									top 15%
-									left 6upx
-									
-			.right 
-				width 80%
-				.scrollContainer
-					height calc(100vh - 96rpx)
-				.proList
-					width 100%
-					display flex
-					flex-wrap wrap
-					.cateImg
-						width 520upx
-						height 190upx
-						margin 20upx auto
-					.proItem 
-						width 33%
-						padding 10upx
-						box-sizing border-box
-						display flex 
-						align-items center
-						flex-direction column
-						image 
-							width 90% 
-							height 144upx
-						p
-							font-size 24upx
-							text-align center
-				
+				height 100%
+				border-right 1px solid #eee
+				text-align center
+				>ul
+					>li
+						width 160px
+						height 50px
+						padding-top 50px
+						font-size 22px
+			.right
+				width 600px
+				margin 30px 0 0 40px
+				background-color #eee
+
+			
 </style>
 		

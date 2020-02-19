@@ -3,6 +3,7 @@ import Category from '../pages/category/category.vue'
 import TrustBuy from '../pages/trustBuy/trustBuy'
 import Polifile from '../pages/polifile/polifile'
 import Shop from '../pages/shop/shop.vue'
+import Login from '../pages/login/login.vue'
 
 export default[
     {
@@ -24,6 +25,10 @@ export default[
     {
         path:'/shop',
         component:Shop
+    },
+    {
+        path:'/login',
+        component:Login
     },
     {
         path:'/',

@@ -1,13 +1,12 @@
 <template>
-	<div>
+	<div id="polifileModule">
 		<div class="header">
-			<image class="userImg" src="../../common/images/nav/1.jpg'" mode=""></image>
-			<div class='userInfo'>
+			<img class="userImg" src="../../common/images/personal/personal.png"/>
+			<div class='userInfo' @click="toLogin">
 				<p>未登录</p>
 				<p>点击登录账号</p>
 			</div>
 		</div>
-		
 		<div class="content">
 			<h2>我的资产</h2>
 			<p class='line'></p>
@@ -35,10 +34,14 @@
 			</div>
 			<!-- 列表选项 -->
 			<div class="personalList">
-				<div class="navItem" >
-					<i class='iconfont '></i>
-					<p></p>
+				<div class="navItem" v-for='(item, index) in personalList' :key='index'>
+					<i class='iconfont ' :class='item.icon'></i>
+					<p>{{item.name}}</p>
 				</div>
+			</div>
+			<!-- 退出登录 -->
+			<div class="logout">
+				<span>退出登录</span>
 			</div>
 		</div>
 	</div>
@@ -54,39 +57,39 @@
 				personalList: [
 					{
 						name: '我的订单',
-						icon: 'icon-dingdan11'
+						icon: 'icon-dingdan'
 					},
 					{
 						name: '我的拼团',
-						icon: 'icon-pintuandingdan'
+						icon: 'icon-pintuan'
 					},
 					{
 						name: '领红包',
-						icon: 'icon-tubiaolunkuo-1'
+						icon: 'icon-hongbao'
 					},
 					{
 						name: '我的积分',
-						icon: 'icon-jifen3'
+						icon: 'icon-jifen'
 					},
 					{
 						name: '地址管理',
-						icon: 'icon-dizhiguanli'
+						icon: 'icon-dizhi'
 					},
 					{
 						name: '账号安全',
-						icon: 'icon-dingdan11'
-					},
-					{
-						name: '联系客服',
 						icon: 'icon-zhanghaoanquan'
 					},
 					{
+						name: '联系客服',
+						icon: 'icon-kefu'
+					},
+					{
 						name: '用户反馈',
-						icon: 'icon-tubiaolunkuo-'
+						icon: 'icon-wode-'
 					},
 					{
 						name: '帮助中心',
-						icon: 'icon-bangzhuzhongxin'
+						icon: 'icon-bangzhuzhongxin1'
 					},
 					{
 						name: '退还/售后',
@@ -94,71 +97,79 @@
 					}
 				]
 			}
-		}
+		},
+		methods: {
+			toLogin(){
+				this.$router.replace('/login')
+			}
+		},
 		
 	}
 </script>
 
 <style lang="stylus">
-		
+#polifileModule	
 	.header
+		height 270px
 		display flex
-		background #EED7B5
-		padding 40upx 0
-		.userImg 
-			width 100upx
-			height 100upx
-			margin 0 50upx 0 30upx
-			background #FFFFFF
-			border-radius 50upx
+		padding 64px 0 0 30px
+		background-color #C5A973
+		box-sizing border-box
+		.userImg
+			width 152px
+			height 152px
+			padding-right 30px
 		.userInfo
-			p
-				height 50upx
-				line-height 50upx
-				&:first-child
-					font-size 28upx
-				&:last-child
-					font-size 24upx
+			padding-top 40px
 	.content
 		h2
-			font-size 26upx
-			line-height 100upx
+			height 104px
+			line-height 104px
 			margin-left 5%
+			font-size 36px
 		.line
-			width 90%
-			height 2upx
-			background #eee
-			margin 0 auto
+			height 3px
+			background-color #eee
+			width 95%
+			margin-left 5%
 		.myAssetList
 			width 90%
-			margin 20upx auto
+			margin 20px auto
 			display flex 
-		
 			.assetItem
 				width 25%
 				display flex
 				flex-direction column
 				align-items center
-				font-size 24upx
+				font-size 24px
 				color #333333
-				line-height 40upx
+				line-height 50px
 		.personalList
 			display flex
 			flex-wrap wrap
-			border-top 1upx solid #EEEEEE
+			border-top 20px solid #eee
 			.navItem
 				width 33.3333%
 				text-align center
-				border-bottom 1upx solid #EEEEEE
-				border-right 1upx solid #EEEEEE
+				border-bottom 3px solid #eee
+				border-right 3px solid #eee
 				box-sizing border-box
-				padding 30upx 0
+				padding-top 60px
 				&:nth-child(3n)
 					border-right none
 				.iconfont 
-					font-size 60upx
+					font-size 70px
 				p
-					font-size 24upx
-					line-height 40upx
+					font-size 26px
+					line-height 110px
+		.logout
+			border-top 40px solid #eee
+			border-bottom 40px solid #eee
+			height 120px
+			margin-bottom 88px
+			text-align center
+			line-height 120px
+
 				
+
 </style>

@@ -1,19 +1,21 @@
 <template>
 <div id="appContainer">
     <!--公共头部分-->
-    <HeaderTab/>
+    <!-- <HeaderTab/> -->
     <router-view></router-view>
-    <FooterGuide/>
+    <div v-if="$route.path !== '/login'">
+      <FooterGuide/>
+    </div>
   </div>
 </template>
 
 <script>
-import HeaderTab from './components/header_common/headerTab'
+// import HeaderTab from './components/header_common/headerTab'
 import FooterGuide from './components/footer_guide/footerGuide'
 export default {
     components:{
     FooterGuide,
-    HeaderTab
+    // HeaderTab
   }
 }
 </script>

@@ -323,6 +323,17 @@
         </li>
       </ul>
     </div>
+    <!-- 底部版权所有 -->
+    <div class="bottom-copyright-module">
+      <div class="load">
+        <a class="app" href="#1">下载App</a>
+        <a class="computer" href="#2">电脑版</a>
+      </div>
+      <div class="copyright">
+        <span class="copy1">网易公司版权所有 @1997-2020</span>
+        <span class="copy2">食品经营许可证：JY13301080111719</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -389,7 +400,6 @@ export default {
       
       let index = navLists.findIndex((left, index)=> (scrollX >= navLists[index] && scrollX < navLists[index+1]))
       if(this.navListScroll && this.index !== index){
-        // this.index = index
         this.navListScroll.scrollToElement(this.$refs.navContainer.children[index], 1000)
       }
       return index
@@ -865,7 +875,7 @@ export default {
       overflow hidden
       li
         float left
-        width 310px
+        width 49%
         margin 0 5px 5px 0
         padding 20px 0 0 20px
         box-sizing border-box
@@ -887,5 +897,36 @@ export default {
           margin-right 0
         &:nth-child(3), &:nth-child(4)
           margin-bottom 0
+  //底部版权所有
+  .bottom-copyright-module
+    width 100%
+    height 244px
+    background-color #000
+    margin-bottom 88px
+    font-size 22px
+    color rgb(153,153,153)
+    .load
+      display flex
+      justify-content center
+      align-items center
+      width 100%
+      height 122px
+      line-height 122px
+      a
+        border 1px solid #fff
+        display block
+        text-align center
+        width 172px
+        height 62px
+        line-height 62px
+        color rgb(153,153,153)
+        &.app
+          margin-right 100px
+    .copyright
+      display flex
+      flex-direction column
+      text-align center
+      line-height 50px
+
 
 </style>
