@@ -5,5 +5,8 @@ export const getIndexData = ()=> myAxios({
     method: 'GET',
     url: '/getIndex'
 });
-
+export const getIndexCateModule = ()=> myAxios({
+    method: 'GET',
+    url: '/getIndexCateModule'
+});
 

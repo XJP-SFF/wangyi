@@ -19,11 +19,7 @@ export default {
 </script>
 
 <style lang="stylus">
-page 
-  width 100%
-  height 100%
-
-	/*每个页面公共css */
-	//@import url("./static/stylus/iconfont/iconfont.styl");
-  // 
+// page 
+//   width 100%
+//   height 100%
 </style>

@@ -1,11 +1,14 @@
 <template>
 	<div class="header-search-login">
-		<img src="../../common/images/logo.png"/>
-		<div class="searchInput" >
-			<i class='iconfont icon-RectangleCopy'></i>
-			<span>搜索商品</span>
-		</div>
-	</div>
+      <img
+        class="logo"
+        src="https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png"
+      />
+      <div class="searchInput">
+        <i class="iconfont icon-sousuo"></i>
+        <input class="placeholder" type="text" placeholder="搜索商品" />
+      </div>
+    </div>
 </template>
 
 
@@ -19,28 +22,39 @@
 
 <style lang="stylus">
 
-.header-search-login
-	display flex
-	// justify-content space-around
-	width 750px
-	height 88px
-	line-height 88px
-	padding 16px 50px
-	img
-		display block
-		width 138px
-		height 56px
-		line-height 56px
-		margin-top 11px
-	.searchInput
-		width 560px
-		height 66px
-		line-height 66px
-		background-color #eee
-		text-align center
-		margin-left 50px
-		border-radius 20
+.header-search-login 
+    display flex
+    width 100%
+    height 90px
+    padding 20px
+    box-sizing border-box
+    background-color #fff
 
+    .logo 
+      width 140px
+      height 40px
+      margin 10px 0 0 15px
+
+    .searchInput 
+      width 440px
+      height 60px
+      background #ededed
+      position relative
+      margin 0 30px
+      border-radius 10px
+
+      .iconfont 
+        font-size 30px
+        position absolute
+        left 10px
+        top 25%
+
+      input 
+        border-radius 10px
+        height 60px
+        width 390px
+        background #ededed
+        margin-left 50px
 		
 	
 </style>
