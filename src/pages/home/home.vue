@@ -3,10 +3,13 @@
     <!-- 头部 -->
 		<IndexHeader/>
     <!-- 导航 -->
-    <div class="navContainer">
-      <ul ref="nav">
-        <li :class="{active: navIndex === index}" v-for="(navItem, index) in indexCateModule" :key="index"><span>{{navItem.name}}</span></li>
+    <div class="navContainer" ref="wrapper">
+      <ul class="nav">
+        <li @click="navIndex = index" :class="{active: navIndex === index}" v-for="(navItem, index) in indexCateModule" :key="index"><span>{{navItem.name}}</span></li>
       </ul>
+      <div class="jiantou" @click="isDown = !isDown">
+        <i class="iconfont" :class="isDown? 'icon-RectangleCopy1':'icon-RectangleCopy2'"></i>
+      </div>
     </div>
     <!-- 轮播 -->
       <div class="swiper-container">
@@ -106,55 +109,12 @@
         </div>
         <div class="content-bottom">
           <ul>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
+            <li v-for="(categoryHotSellItem,index) in categoryHotSellModule" :key="index" v-show="index>1">
+              <div class="title"><span>{{categoryHotSellItem.categoryName}}</span></div>
               <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
+               <img :src="categoryHotSellItem.picUrl" alt="">
               </div>
             </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="title"><span>居家生活榜</span></div>
-              <div class="img-wrap">
-               <img src="https://yanxuan-item.nosdn.127.net/93a20b799b978c1b3e800ce3f0e16842.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-              </div>
-            </li>
-           
           </ul>
         </div>
       </div>
@@ -174,46 +134,11 @@
       </div>
       <div class="flashSale-content">
         <ul>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/86a517ee37b94e00fcddb0bfd50fc433.png?quality=75&type=webp&imageView&thumbnail=216x216" alt=""></div>
+          <li v-for="(flashSaleItem,index) in flashSaleModule" :key="index">
+            <div class="img-wrap"><img :src="flashSaleItem.picUrl" alt=""></div>
             <div class="price">
-              <span>￥290</span>
-              <span><del>￥330</del></span>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/86a517ee37b94e00fcddb0bfd50fc433.png?quality=75&type=webp&imageView&thumbnail=216x216" alt=""></div>
-            <div class="price">
-              <span>￥290</span>
-              <span><del>￥330</del></span>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/86a517ee37b94e00fcddb0bfd50fc433.png?quality=75&type=webp&imageView&thumbnail=216x216" alt=""></div>
-            <div class="price">
-              <span>￥290</span>
-              <span><del>￥330</del></span>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/86a517ee37b94e00fcddb0bfd50fc433.png?quality=75&type=webp&imageView&thumbnail=216x216" alt=""></div>
-            <div class="price">
-              <span>￥290</span>
-              <span><del>￥330</del></span>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/86a517ee37b94e00fcddb0bfd50fc433.png?quality=75&type=webp&imageView&thumbnail=216x216" alt=""></div>
-            <div class="price">
-              <span>￥290</span>
-              <span><del>￥330</del></span>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/86a517ee37b94e00fcddb0bfd50fc433.png?quality=75&type=webp&imageView&thumbnail=216x216" alt=""></div>
-            <div class="price">
-              <span>￥290</span>
-              <span><del>￥330</del></span>
+              <span>￥{{flashSaleItem.activityPrice}}</span>
+              <span><del>￥{{flashSaleItem.originPrice}}</del></span>
             </div>
           </li>
         </ul>
@@ -227,51 +152,11 @@
       </div>
       <div class="newItem-content">
         <ul>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/0fd9f9e40f287ecfe3b54aaafda914f6.png?type=webp&imageView&quality=65&thumbnail=330x330" alt=""></div>
+          <li v-for="(newItem,index) in newItemList" :key="index" v-show="index<=5">
+            <div class="img-wrap"><img :src="newItem.showPicUrl" alt=""></div>
             <div class="good">
-              <div class="newItemDesc"><span>赏味正当时，春见耙耙柑 5斤</span></div>
-              <div class="price"><span>￥59</span></div>
-              <div class="tag-wrap"><span>特价</span></div>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/0fd9f9e40f287ecfe3b54aaafda914f6.png?type=webp&imageView&quality=65&thumbnail=330x330" alt=""></div>
-            <div class="good">
-              <div class="newItemDesc"><span>赏味正当时，春见耙耙柑 5斤</span></div>
-              <div class="price"><span>￥59</span></div>
-              <div class="tag-wrap"><span>特价</span></div>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/0fd9f9e40f287ecfe3b54aaafda914f6.png?type=webp&imageView&quality=65&thumbnail=330x330" alt=""></div>
-            <div class="good">
-              <div class="newItemDesc"><span>赏味正当时，春见耙耙柑 5斤</span></div>
-              <div class="price"><span>￥59</span></div>
-              <div class="tag-wrap"><span>特价</span></div>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/0fd9f9e40f287ecfe3b54aaafda914f6.png?type=webp&imageView&quality=65&thumbnail=330x330" alt=""></div>
-            <div class="good">
-              <div class="newItemDesc"><span>赏味正当时，春见耙耙柑 5斤</span></div>
-              <div class="price"><span>￥59</span></div>
-              <div class="tag-wrap"><span>特价</span></div>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/0fd9f9e40f287ecfe3b54aaafda914f6.png?type=webp&imageView&quality=65&thumbnail=330x330" alt=""></div>
-            <div class="good">
-              <div class="newItemDesc"><span>赏味正当时，春见耙耙柑 5斤</span></div>
-              <div class="price"><span>￥59</span></div>
-              <div class="tag-wrap"><span>特价</span></div>
-            </div>
-          </li>
-          <li>
-            <div class="img-wrap"><img src="https://yanxuan-item.nosdn.127.net/0fd9f9e40f287ecfe3b54aaafda914f6.png?type=webp&imageView&quality=65&thumbnail=330x330" alt=""></div>
-            <div class="good">
-              <div class="newItemDesc"><span>赏味正当时，春见耙耙柑 5斤</span></div>
-              <div class="price"><span>￥59</span></div>
+              <div class="newItemDesc"><span>{{newItem.name}}</span></div>
+              <div class="price"><span>￥{{newItem.retailPrice}}</span></div>
               <div class="tag-wrap"><span>特价</span></div>
             </div>
           </li>
@@ -281,44 +166,14 @@
     <!-- 其他 -->
     <div class="sceneLight-shoppingGuide-module">
       <ul>
-        <li>
+        <li v-for="(shoppingGuideItem,index) in shoppingGuideModule" :key="index">
           <div class="title">
-            <span>断货补单王</span><br>
-            <span>紧急补仓疯抢中</span>
+            <span>{{shoppingGuideItem.styleItem.title}}</span><br>
+            <span>{{shoppingGuideItem.styleItem.desc}}</span>
           </div>
           <div class="pic">
-            <img src="https://yanxuan-item.nosdn.127.net/5e818e36e0cfd0bb474c57f27e76b46d.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-            <img src="https://yanxuan-item.nosdn.127.net/445689c4faa55f8186c500e68bff73d6.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-          </div>
-        </li>
-         <li>
-          <div class="title">
-            <span>断货补单王</span><br>
-            <span>紧急补仓疯抢中</span>
-          </div>
-          <div class="pic">
-            <img src="https://yanxuan-item.nosdn.127.net/5e818e36e0cfd0bb474c57f27e76b46d.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-            <img src="https://yanxuan-item.nosdn.127.net/445689c4faa55f8186c500e68bff73d6.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-          </div>
-        </li>
-         <li>
-          <div class="title">
-            <span>断货补单王</span><br>
-            <span>紧急补仓疯抢中</span>
-          </div>
-          <div class="pic">
-            <img src="https://yanxuan-item.nosdn.127.net/5e818e36e0cfd0bb474c57f27e76b46d.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-            <img src="https://yanxuan-item.nosdn.127.net/445689c4faa55f8186c500e68bff73d6.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-          </div>
-        </li>
-         <li>
-          <div class="title">
-            <span>断货补单王</span><br>
-            <span>紧急补仓疯抢中</span>
-          </div>
-          <div class="pic">
-            <img src="https://yanxuan-item.nosdn.127.net/5e818e36e0cfd0bb474c57f27e76b46d.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-            <img src="https://yanxuan-item.nosdn.127.net/445689c4faa55f8186c500e68bff73d6.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+            <img :src="shoppingGuideItem.styleItem.picUrlList[0]" alt="">
+            <img :src="shoppingGuideItem.styleItem.picUrlList[1]" alt="">
           </div>
         </li>
       </ul>
@@ -349,25 +204,31 @@ export default {
   },
   data(){
     return {
-      navLists: [], //获取所有导航的li标对应累计的值
-      scrollX: 0, //内容滚动的距离
       focusList: [],
       policyDescList: [],
       indexCateModule: [],
       kingKongModule:[],
-      categoryHotSellModule:[]
+      categoryHotSellModule:[],
+      flashSaleModule:[],
+      newItemList:[],
+      shoppingGuideModule:[],
+      isDown:true,
+      navIndex:0
     }
   },
   async mounted() {
     //发送ajax请求，获取首页对应的数据
     let indexDatas = await this.$API.getIndexData()
     let indexCateModule = await this.$API.getIndexCateModule()
-		const {focusList, policyDescList, kingKongModule,categoryHotSellModule} = indexDatas
+		const {newItemList,focusList, sceneLightShoppingGuideModule,policyDescList, kingKongModule,categoryHotSellModule,flashSaleModule} = indexDatas
 		this.focusList = focusList
 		this.policyDescList = policyDescList
     this.kingKongModule = kingKongModule.kingKongList
     this.indexCateModule = indexCateModule
     this.categoryHotSellModule = categoryHotSellModule.categoryList
+    this.flashSaleModule = flashSaleModule.itemList
+    this.newItemList = newItemList
+    this.shoppingGuideModule = sceneLightShoppingGuideModule
     this.$nextTick(() => {
       //创建Swiper实例对象
       new Swiper(".swiper-container", {
@@ -378,33 +239,13 @@ export default {
         }
       })
       //创建BScroll实例对象
-      this.navListScroll = new BScroll('.navContainer', {
+      this.navListScroll = new BScroll(this.$refs.wrapper, {
         scrollX: true,//横向滚动
         probeType: 2,
         click: true
-      });
-      //绑定事件
-      this.navListScroll.on('scroll', ({x, y})=>{
-        this.scrollX = Math.abs(x);
-      });
-
-      this.navListScroll.on('scrollEnd', ({x, y})=>{
-        this.scrollX = Math.abs(x);
-      });
-    });
+      })
+    })
   },
-  computed: {
-    //计算导航对应的下标值，来确定高亮显示位置
-    navIndex(){
-      const {navLists, scrollX} = this
-      
-      let index = navLists.findIndex((left, index)=> (scrollX >= navLists[index] && scrollX < navLists[index+1]))
-      if(this.navListScroll && this.index !== index){
-        this.navListScroll.scrollToElement(this.$refs.navContainer.children[index], 1000)
-      }
-      return index
-    }
-  }
 }
 </script>
 
@@ -412,24 +253,27 @@ export default {
 @import '../../common/stylus/mixins.styl'
 #indexContainer 
   width 100%
-  height 3000px
+  height 6100px
   background-color #eee
   // 导航栏
   .navContainer
     width 100%
-    height 60px
-    line-height 60px
+    height 80px
+    line-height 80px
     font-size 28px
     background-color #fff
-    nav
+    overflow hidden
+    position relative
+    .nav
+      width 1550px
       height 100%
-      display flex
+      display flex     
       li
         position relative
-        padding 0 16px
+        padding 0 30px
         white-space nowrap
         &.active
-          color $mainColor
+          color red
           span 
             &::after
               content ''
@@ -439,11 +283,23 @@ export default {
               bottom 0
               width 100%
               height 4px
-              background-color $mainColor
+              background-color red
+    .jiantou
+      position absolute
+      right 0
+      top 0
+      height 80px
+      line-height 80px
+      background-color #ffffff
+      width 160px
+      text-align center
+      .iconfont
+        font-size 100px
+  
   //轮播图
   .swiper-container 
     width 100%
-    height 370px
+    height 380px
     .swiper-wrapper
       width 100%
       height 100%
@@ -483,9 +339,10 @@ export default {
   //商品列表
   .shopList-nav
     width 100%
-    height 340px
+    height 350px
     background-color #fff
-
+    padding 20px 0
+    margin-bottom 2px
     ul
       width 100%
       height 100%
@@ -509,12 +366,14 @@ export default {
   .promotion-module
     width 100%
     background-color #fff
+    padding-top 20px
     .floor-top, .floor-first
       img 
         width 100% 
     .floor-first, .floor-list
       padding 0 20px
       background-color #1674e3
+      box-sizing border-box
     .floor-list
       width 100%
       overflow hidden
@@ -522,7 +381,7 @@ export default {
       ul
         width 100%
         li
-          width 350px
+          width 400px
           height 186px
           margin-top 10px
           float left
@@ -530,11 +389,11 @@ export default {
             width 100%  
             height 100%  
           &:nth-child(2n+1)
-            margin-right 10px     
+            margin-right 20px     
   //新人专享
   .freshman-module
     width 100%
-    padding 0 30px 30px 30px
+    padding 20px 30px 40px 20px
     box-sizing border-box
     background-color #fff
     margin 20px 0 30px 0
@@ -649,9 +508,10 @@ export default {
   //类目热搜榜
   .category-hotSell-module
     width 100%
-    padding 0 30px 20px 
+    padding 0 30px 40px 30px 
     box-sizing border-box
     background-color #fff
+    margin 0 0 30px
     .hotSell-module-title
       width 100%
       height 100px
@@ -670,9 +530,9 @@ export default {
           border-radius 5px
         .content-top-left, .content-top-right
           display flex
-          width 338px
+          width 400px
           background-color #f9f3e4
-          padding-left 20px
+          padding-left 30px
           line-height 150px
           margin 0 10px 10px 0
           box-sizing border-box
@@ -711,13 +571,13 @@ export default {
           box-sizing border-box
           li
             position relative
-            width 165px
+            width 195px
             height 180px
             float left
             border-radius 5px
             background-color #f5f5f5
             margin 0 10px 10px 0
-            &:nth-child(4), &:nth-child(8)
+            &:nth-child(6), &:nth-child(10)
               margin-right 0
             .title
               width 100%
@@ -743,7 +603,7 @@ export default {
     padding 0 30px
     background-color #fff
     box-sizing border-box
-    margin 20px 0
+    margin-bottom 30px
     .flashSale-module-title
       display flex
       width 100%
@@ -769,6 +629,7 @@ export default {
       .more
         flex-grow 2
         text-align right
+        margin-right 10px
     .flashSale-content
       width 100%
       box-sizing border-box
@@ -776,16 +637,16 @@ export default {
         width 100%
         overflow hidden
         li
-          width 216px
+          width 250px
           float left
           padding-bottom 30px
-          margin-right 20px
+          margin-right 30px
           border-radius 5px
           &:nth-child(3), &:nth-child(6)
             margin-right 0
           >.img-wrap
-            width 216px
-            height 216px
+            width 250px
+            height 240px
             background-color #f5f5f5
             img
               width 100%
@@ -807,8 +668,8 @@ export default {
     padding 0 30px
     background-color #fff
     box-sizing border-box
-    margin 20px 0
-    padding-bottom 26px
+    margin-bottom 30px
+    padding-bottom 40px
     .newItem-title
       display flex
       width 100%
@@ -820,6 +681,7 @@ export default {
       .more
         flex-grow 2
         text-align right
+        margin-right 10px
     .newItem-content
       width 100%
       box-sizing border-box
@@ -827,15 +689,15 @@ export default {
         width 100%
         overflow hidden
         li
-          width 216px
+          width 250px
           float left
-          padding-bottom 30px
-          margin-right 20px
+          padding-bottom 40px
+          margin-right 30px
           border-radius 5px
           &:nth-child(3), &:nth-child(6)
             margin-right 0
           >.img-wrap
-            width 216px
+            width 250px
             height 216px
             background-color #f5f5f5
             img
@@ -844,32 +706,33 @@ export default {
           .good
             width 100%
             font-size 22px
+            overflow hidden
             .newItemDesc
               width 100%
-              // font-size 24px
-              line-height 35px
+              font-size 31px
+              line-height 50px
               margin-top 10px
+              white-space nowrap
             .price
               color $mainColor
-              // font-size 24px
+              font-size 24px
               padding 10px 0
             .tag-wrap
-              width 54px
+              width 100px
               height 30px
               text-align center
               line-height 30px
-              border 1px solid $mainColor
+              border 1px solid red
               span
-                color $mainColor
-                // font-size 18px
+                color red
+                font-size 18px
   // 其他   
   .sceneLight-shoppingGuide-module
     width 100%
-    padding 0 20px
+    padding 30px
     background-color #fff
     box-sizing border-box
-    margin 20px 0
-    padding-bottom 26px
+    margin-bottom 30px
     ul
       width 100%
       overflow hidden
@@ -882,12 +745,12 @@ export default {
         background-color #f5f5f5
         .title
           >span
+            font-size 24px
             line-height 42px
+            color #7f7f7f
             &:nth-child(1)
-              font-size 24px
-            &:nth-child(2)
-              font-size 24px
-              color #7f7f7f
+              font-size 38px
+              color #000
         .pic
           display flex
           img

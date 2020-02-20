@@ -7,19 +7,9 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="left">
+			<div class="left" ref="categoryNav">
 				<ul>
-					<li>推荐专区</li>
-					<li>推荐专区</li>
-					<li>推荐专区</li>
-					<li>推荐专区</li>
-					<li>推荐专区</li>
-					<li>推荐专区</li>
-					<li>gghfjdhg</li>
-					<li>gghfjdhg</li>
-					<li>gghfjdhg</li>
-					<li>gghfjdhg</li>
-					<li>gghfjdhg</li>
+					<li @click="navIndex = index" :class="{active: navIndex === index}" v-for="(categoryNavItem, index) in categoryNavDatas" :key="index">{{categoryNavItem.name}}</li>
 				</ul>
 			</div>
 			<div class="right" >
@@ -30,8 +20,23 @@
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 	export default {
-		
+		data(){
+			return{
+				categoryNavDatas:[],
+				navIndex:0
+			}
+		},
+		async mounted() {
+			let result = await this.$API.getCategoryDatas()
+			this.categoryNavDatas = result.categoryL1List
+			//创建BScroll实例对象
+			this.navScroll = new BScroll(this.$refs.categoryNav, {
+				probeType: 2,
+				click: true
+			})
+		},
 	}
 </script>
 
@@ -42,12 +47,11 @@
 			width 100%
 			height 88px
 			box-sizing border-box
-			padding 0 30px
+			padding 16px 30px
 			border-bottom 1px solid #eee
 			background-color #fff
 			.headerBg
 				margin-left 60px
-				margin-top 16px
 				background-color #eeeeee
 				width 690px
 				height 56px
@@ -58,20 +62,26 @@
 					margin-right 20px
 		.content
 			width 100%
-			height 1250px
 			display flex
+			overflow hidden
+			height 100%
 			.left
-				width 160px
+				width 170px
 				box-sizing border-box
-				height 100%
 				border-right 1px solid #eee
 				text-align center
+				height 1400px
 				>ul
+					height 1500px
 					>li
 						width 160px
 						height 50px
-						padding-top 50px
-						font-size 22px
+						margin 60px 0
+						font-size 32px
+						line-height 50px
+						&.active
+							color red
+							border-left 1px solid red
 			.right
 				width 600px
 				margin 30px 0 0 40px

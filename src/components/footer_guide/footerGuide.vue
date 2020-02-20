@@ -50,7 +50,6 @@
     .footerItem
       width 20%
       height 98px
-      // line-height 108px
       text-align center
       display flex
       flex-direction column

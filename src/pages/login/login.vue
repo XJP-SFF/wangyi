@@ -99,7 +99,7 @@
 					box-sizing border-box
 					border 1px solid red
 		.loginWays
-			height 250px
+			height 245px
 			line-height 300px
 			.interval
 				font-size 40px
