@@ -1,15 +1,33 @@
 <template>
   <div id="indexContainer">
-    <!-- 头部 -->
-		<IndexHeader/>
-    <!-- 导航 -->
-    <div class="navContainer" ref="wrapper">
-      <ul class="nav">
-        <li @click="navIndex = index" :class="{active: navIndex === index}" v-for="(navItem, index) in indexCateModule" :key="index"><span>{{navItem.name}}</span></li>
-      </ul>
-      <div class="jiantou" @click="isDown = !isDown">
-        <i class="iconfont" :class="isDown? 'icon-RectangleCopy1':'icon-RectangleCopy2'"></i>
+    <div class="fixedContainer">
+      <!-- 头部 -->
+      <IndexHeader/>
+      <!-- 导航 -->
+      <div class="navContainer" ref="wrapper">
+        <ul class="nav">
+          <li @click="navIndex = index" :class="{active: navIndex === index}" v-for="(navItem, index) in indexCateModule" :key="index"><span>{{navItem.name}}</span></li>
+        </ul>
       </div>
+    </div>
+    <!-- 箭头 -->
+    <div class="jiantou" @click="handleDownMask">
+      <i class="iconfont" :class="isDown? 'icon-RectangleCopy1':'icon-RectangleCopy2'"></i>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="mask-wrap" v-show="isShowMask">
+      <div class="mask-top" @click="isShowMask=true">
+        <div class="nav-title">
+          全部频道
+        </div>
+        <div class="more-cate">
+          <ul class="cate-list">
+            <li  @click="navIndex = index" :class="{active: navIndex === index}" v-for="(navItem, index) in indexCateModule" :key="index"><span>{{navItem.name}}</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- toggleIsShowMask -->
+      <div class="mask-bottom" @click="isShowMask=false, isDown=false"></div>
     </div>
     <!-- 轮播 -->
       <div class="swiper-container">
@@ -213,7 +231,8 @@ export default {
       newItemList:[],
       shoppingGuideModule:[],
       isDown:true,
-      navIndex:0
+      navIndex:0,
+      isShowMask:false
     }
   },
   async mounted() {
@@ -246,60 +265,115 @@ export default {
       })
     })
   },
+  methods:{
+    handleDownMask(){
+      this.isDown = !this.isDown
+      this.isShowMask = !this.isShowMask
+    }
+  }
 }
 </script>
 
 <style lang="stylus">
 @import '../../common/stylus/mixins.styl'
 #indexContainer 
-  width 100%
-  height 6100px
+  // width 100%
+  height 5900px
   background-color #eee
-  // 导航栏
-  .navContainer
+  // 头部固定
+  .fixedContainer
+    position fixed
+    left 0
+    top 0
+    z-index 99
     width 100%
-    height 80px
-    line-height 80px
-    font-size 28px
-    background-color #fff
-    overflow hidden
-    position relative
-    .nav
-      width 1550px
-      height 100%
-      display flex     
-      li
-        position relative
-        padding 0 30px
-        white-space nowrap
-        &.active
-          color red
-          span 
-            &::after
-              content ''
-              display block
-              position absolute
-              left 0
-              bottom 0
-              width 100%
-              height 4px
-              background-color red
-    .jiantou
-      position absolute
-      right 0
-      top 0
+    background-color white
+    // 导航栏
+    .navContainer
       height 80px
       line-height 80px
-      background-color #ffffff
-      width 160px
-      text-align center
-      .iconfont
-        font-size 100px
+      font-size 28px
+      background-color #fff
+      overflow hidden
+      position relative
+      .nav
+        width 1550px
+        height 100%
+        display flex     
+        li
+          // position relative
+          padding 0 30px
+          white-space nowrap
+          &.active
+            color red
+            border-bottom 1px solid red
+  // 箭头
+  .jiantou
+    position fixed
+    right 0
+    top 102px
+    height 78px
+    line-height 70px
+    background-color #ffffff
+    width 160px
+    text-align center
+    z-index 120
+    .iconfont
+      font-size 100px
+  //遮罩层
+  .mask-wrap
+    width 100%
+    height calc(100vh - 105px)
+    position fixed 
+    bottom 0
+    left 0
+    z-index 100
+    background-color rgba(0, 0, 0, 0.4) 
+    .mask-top
+      width 100%
+      .nav-title
+        width 100%
+        height 60px
+        line-height 66px
+        font-size 32px
+        padding-left 30px
+        box-sizing border-box
+        background-color #fff
+      .more-cate
+        padding-top 40px
+        width 100%
+        background-color #fff
+        padding-bottom 50px
+        .cate-list
+          width 100%
+          overflow hidden
+          li
+            float left 
+            width 180px
+            height 70px
+            line-height 70px
+            margin-left 30px
+            margin-bottom 50px
+            border 1px solid #ccc
+            background-color #eee
+            &.active
+              color red
+              border 1px solid red
+            span
+              display block
+              width 100%
+              height 100%
+              text-align center
+              font-size 24px
+    .mask-bottom
+      width 100%
+      height 100%  
   
   //轮播图
   .swiper-container 
     width 100%
-    height 380px
+    height 450px
+    margin-top 183px
     .swiper-wrapper
       width 100%
       height 100%
@@ -314,7 +388,7 @@ export default {
     /* 深度选择器的使用 */
     /deep/.swiper-pagination 
       >span.swiper-pagination-bullet-active 
-        background-color $mainColor
+        background-color red
 
   //服务政策
   .service-policy

@@ -2,10 +2,10 @@
 	<div id="loginContainer">
 		<!-- 头部 -->
 		<div id="login-header">
-			<i class="iconfont icon-shouye"></i>
+			<i class="iconfont icon-shouye" @click="$router.push('/home')"></i>
 			<img class="logoImg" src="../../common/images/logo.png"/>
-			<i class="iconfont icon-search"></i>
-			<i class="iconfont icon-cart-Empty"></i>
+			<i class="iconfont icon-search" @click="$router.push('/search')"></i>
+			<i class="iconfont icon-cart-Empty" @click="$router.push('/shop')"></i>
 		</div>
 		<img class="logo" src="http://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png"/>
 		<div class="loginMethods">

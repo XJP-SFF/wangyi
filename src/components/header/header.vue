@@ -31,7 +31,7 @@
 
 .header-search-login 
     display flex
-    width 100%
+    // width 100%
     height 100px
     padding 20px
     box-sizing border-box

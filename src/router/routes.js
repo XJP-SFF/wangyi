@@ -4,7 +4,9 @@ import TrustBuy from '../pages/trustBuy/trustBuy'
 import Polifile from '../pages/polifile/polifile'
 import Shop from '../pages/shop/shop.vue'
 import Login from '../pages/login/login.vue'
+import Search from '../pages/search/search.vue'
 
+import Coupon from '../pages/shop/coupon/coupon.vue'
 export default[
     {
         path:'/home',
@@ -24,11 +26,21 @@ export default[
     },
     {
         path:'/shop',
-        component:Shop
+        component:Shop,
+        children:[
+            {
+                path:'/coupon',
+                component:Coupon
+            }
+        ]
     },
     {
         path:'/login',
         component:Login
+    },
+    {
+        path:'/search',
+        component:Search
     },
     {
         path:'/',

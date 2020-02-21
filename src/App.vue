@@ -4,7 +4,7 @@
     <!-- <HeaderTab/> -->
     <router-view></router-view>
     <div v-if="$route.path !== '/login'">
-      <FooterGuide/>
+      <FooterGuide :userInfo ="userInfo"/>
     </div>
   </div>
 </template>
@@ -14,14 +14,26 @@
 import FooterGuide from './components/footer_guide/footerGuide'
 export default {
     components:{
-    FooterGuide,
-    // HeaderTab
-  }
+      FooterGuide,
+      // HeaderTab
+    },
+    data(){
+      return{
+        userInfo:{}
+      }
+    },
+    mounted(){
+      // 判断是否登录
+      let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+      if (userInfo) {
+        this.userInfo = userInfo
+      }
+    }
 }
 </script>
 
 <style lang="stylus">
-page 
-  width 100%
-  height 100%
+// page 
+//   width 100%
+//   height 100%
 </style>

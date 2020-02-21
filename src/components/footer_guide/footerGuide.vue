@@ -16,7 +16,7 @@
         <i class="iconfont icon-add-cart"></i>
         <span>购物车</span>
     </div>
-    <div class="footerItem" :class="{active: $route.path === '/polifile'}" @click="goUrl('/polifile')">
+    <div class="footerItem" :class="{active: $route.path === '/polifile'}" @click="!!(userInfo.name)? goUrl('/polifile'):$router.push('/login')">
         <i class="iconfont icon-wode1"></i>
         <span>个人</span>
     </div>
@@ -26,6 +26,7 @@
 
 <script>
   export default {
+      props:['userInfo'],
       methods:{
           goUrl(path){
               this.$router.push(path)
