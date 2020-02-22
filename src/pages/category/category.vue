@@ -12,8 +12,29 @@
 					<li @click="navIndex = index" :class="{active: navIndex === index}" v-for="(categoryNavItem, index) in categoryNavDatas" :key="index">{{categoryNavItem.name}}</li>
 				</ul>
 			</div>
-			<div class="right" >
-				右边
+			<div class="right" v-show="id===item.id" v-for="(item, index) in cateList" :key="index">
+				<div class="right-header">
+					<img src="../../common/images/order/person.png" alt="">
+				</div>
+				<div class="right-content">
+					<div class="hasTitle" v-if="item.subCateList">
+						<ul v-for="(subCateItem, index) in item.subCateList" :key="index">
+							<li>
+								<div class="title">{{subCateItem.name}}</div>
+								<div class="line"></div>
+								<ul>
+									<li></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<ul v-if="item.categoryList">
+						<li v-for="(categoryItem, index) in item.categoryList" :key="index">
+							<img src="categoryItem.bannerUrl" alt="">
+							<div class="desc">{{categoryItem.name}}</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -25,12 +46,16 @@ import BScroll from 'better-scroll'
 		data(){
 			return{
 				categoryNavDatas:[],
-				navIndex:0
+				navIndex:0,
+				cateList:[]
 			}
 		},
 		async mounted() {
-			let result = await this.$API.getCategoryDatas()
-			this.categoryNavDatas = result.categoryL1List
+			let categoryNavDatas = await this.$API.getCategoryDatas()
+			let cateList = await this.$API.getCateList()
+			this.categoryNavDatas = categoryNavDatas.categoryL1List
+			this.cateList = cateList
+			this.categoryNavDatas.filter(item => this.id =item.id)
 			//创建BScroll实例对象
 			this.navScroll = new BScroll(this.$refs.categoryNav, {
 				probeType: 2,
