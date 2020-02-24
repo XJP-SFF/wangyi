@@ -24,7 +24,7 @@
             <span class="link">《网易隐私政策》</span>
           </div>
           <div class="foot" @click="handleSkip">
-            <span>其他登录方式<i class="iconfont icon-jiankuohaoyou"></i></span>
+            <span>其他登录方式<i class="iconfont icon-icon-test6"></i></span>
           </div>
         </div>
         <!-- 邮箱账号登录 -->
@@ -37,7 +37,7 @@
           </div>
           <button class="login-btn" @click.prevent="login">登录</button>
           <div class="foot" @click="handleSkip">
-            <span>其他登录方式<i class="iconfont icon-jiankuohaoyou"></i></span>
+            <span>其他登录方式<i class="iconfont icon-icon-test6"></i></span>
           </div>
         </div>
      </form>
@@ -73,7 +73,7 @@
   .logo-wrap
     width 268px
     height 90px
-    margin 56px auto
+    margin 200px auto
     >img 
       width 100%
       height 100%
@@ -85,6 +85,7 @@
     //手机号登录方式
     .phone-mode
       position relative
+      margin-top 240px 
       >input
         width 100%
         outline none
@@ -142,7 +143,8 @@
       .foot
         width 100%
         text-align center
-        margin-top 80px
+        margin-top 343px
+        margin-bottom 60px
         font-size 28px
         vertical-align middle
         span
@@ -202,7 +204,8 @@
       .foot
         width 100%
         text-align center
-        margin-top 80px
+        margin-top 500px
+        margin-bottom 50px
         font-size 28px
         vertical-align middle
         span

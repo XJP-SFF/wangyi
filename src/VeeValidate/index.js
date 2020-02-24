@@ -21,9 +21,23 @@ VeeValidate.Validator.extend('mobile', {
     },
     getMessage: field => field + '必须是11位手机号码'
 })
-VeeValidate.Validator.extend('code', { //短信验证码
+//郵箱^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$
+//密碼/^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)\S{8,}$/
+VeeValidate.Validator.extend('captcha', { //驗證碼
     validate: value => {
-      return /^\d{4,6}$/.test(value)
+      return /\d{4,6}/.test(value)
     },
     getMessage: field => field + '必须是4-6位的验证码'
+})
+VeeValidate.Validator.extend('email', { //郵箱
+  validate: value => {
+    return /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value)
+  },
+  getMessage: field => field + '必须是合格的郵箱'
+})
+VeeValidate.Validator.extend('code', { //密碼
+  validate: value => {
+    return /^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)\S{8,}$/.test(value)
+  },
+  getMessage: field => field + '必须是包含字母、數字8位的密碼'
 })

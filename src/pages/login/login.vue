@@ -7,8 +7,8 @@
 			<i class="iconfont icon-search" @click="$router.push('/search')"></i>
 			<i class="iconfont icon-cart-Empty" @click="$router.push('/shop')"></i>
 		</div>
-		<img class="logo" src="http://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png"/>
-		<div class="loginMethods">
+		<img class="logo" v-show="isShowloginMode === false" src="http://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png"/>
+		<div class="loginMethods" v-show="isShowloginMode === false">
 			<div class="login">
 				<div class="phone" @click="handleLogin(1)">
 					<i class="iconfont icon-shouji1"></i>
@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<!-- 登录方式 -->
-		<div class="loginWays">
+		<div class="loginWays" v-show="isShowloginMode === false">
 			<i class="iconfont icon-weixinhover"></i>
 			<span class="word">微信</span>
 			<span class="interval">|</span>
@@ -32,7 +32,7 @@
 			<span class="word">微博</span>
 		</div>
 		<!-- loginModule -->
-		<LoginModule @func="getMsgFormSon" :modeFlag="modeFlag"/>
+		<LoginModule @func="getMsgFormSon" :modeFlag="modeFlag" v-show="isShowloginMode !== false"/>
 	</div>
 </template>
 
@@ -42,7 +42,7 @@ import LoginModule from '../../components/loginModule/loginModule'
 		components:{LoginModule},
 		data() {
 			return {
-				modeFlag:1,
+				modeFlag:0,
 				isShowloginMode:false,
 			}
 		},

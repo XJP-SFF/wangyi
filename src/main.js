@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-// import './VeeValidate'
+import './VeeValidate'
 import waterfall from "vue-waterfall2"
 Vue.use(waterfall);
 
