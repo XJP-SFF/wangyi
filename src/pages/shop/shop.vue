@@ -43,7 +43,7 @@
     mounted(){
       // 判断是否登录
       let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-      if (userInfo.name) {
+      if (userInfo) {
         this.noUserInfo = false
       }
     }

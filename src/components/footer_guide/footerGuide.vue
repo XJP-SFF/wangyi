@@ -4,7 +4,7 @@
         <i class="iconfont icon-shouye"></i>
         <span>首页</span>
     </div>
-    <div class="footerItem" :class="{active: $route.path === '/category'}" @click="goUrl('/category')">
+    <div class="footerItem" :class="{active: $route.path === `/category/cateId/${$route.params.id}`}" @click="goUrl('/category')">
         <i class="iconfont icon-category"></i>
         <span>分类</span>
     </div>
@@ -29,7 +29,7 @@
       props:['userInfo'],
       methods:{
           goUrl(path){
-              this.$router.push(path)
+              path !== this.$route.path && this.$router.replace(path)
           }
       }
 

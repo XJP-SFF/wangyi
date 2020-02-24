@@ -7,6 +7,8 @@ import Login from '../pages/login/login.vue'
 import Search from '../pages/search/search.vue'
 
 import Coupon from '../pages/shop/coupon/coupon.vue'
+import SubRightCateList from '../pages/category/rightCateList/rightCateList.vue'
+
 export default[
     {
         path:'/home',
@@ -14,7 +16,13 @@ export default[
     },
     {
         path:'/category',
-        component:Category
+        component:Category,
+        children: [
+            {
+                path: '/category/cateId/:id',
+                component: SubRightCateList,
+            }
+        ]
     },
     {
         path:'/trustBuy',

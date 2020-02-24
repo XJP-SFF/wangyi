@@ -2,85 +2,92 @@
   <div id="trustBuyModule">
     <!-- 头部 -->
     <div class="trustBuy-header">
-      <i class="iconfont icon-shouye"></i>
+      <i class="iconfont icon-shouye" @click="$router.push('/home')"></i>
       <span class="trustBuyWord">值得买</span>
-			<i class="iconfont icon-search"></i>
+			<i class="iconfont icon-search" @click="handleClickSkip"></i>
 			<i class="iconfont icon-cart-Empty"></i>
     </div>
     <!-- 轮播图 -->
-    <div class="middle-trustBuy">
-      <img class="bgtrust" src="../../common/images/bgtrust.png" alt="">
-      <img class="trustBuy" src="../../common/images/trustBuy.png" alt="">
-      <span class="goodWord">严选好物 用心生活</span>
+    <div class="swiperTab-wrap">
+      <div class="swiperTab-title">
+        <img src="https://m.you.163.com/topic/index/img/topic_logo.c2284970.png" alt="">
+        <span>严选好物 用心生活</span>
+      </div>
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="swiper-item">
-              <a href="#3">
-                <div class="image">
-                  <img src="../../common/images/nav/1.jpg" />
-                </div>
-                <div class="maintext">9.9超值</div>
-                <div class="desctext">定价直降</div>
-              </a>
-              <a href="#3">
-                <div class="image">
-                  <img src="../../common/images/nav/2.jpg" />
-                </div>
-                <div class="maintext">9.9超值</div>
-                <div class="desctext">定价直降</div>
-              </a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-item">
-              <a href="#3">
-                <div class="image">
-                  <img src="../../common/images/nav/1.jpg" />
-                </div>
-                <div class="maintext">9.9超值</div>
-                <div class="desctext">定价直降</div>
-              </a>
-              <a href="#3">
-                <div class="image">
-                  <img src="../../common/images/nav/2.jpg" />
-                </div>
-                <div class="maintext">9.9超值</div>
-                <div class="desctext">定价直降</div>
-              </a>
-            </div>
+          <div class="swiper-slide" v-for="(navItem, index) in newNavList" :key="index">
+            <a class="link-to-pro" v-for="(item, index) in navItem" :key="index">
+              <div class="pro-container">
+                <img :src="item.picUrl" />
+              </div>
+              <div class="text">
+                <span class="text-title">{{item.mainTitle}}</span><br>
+                <span class="text-desc">{{item.viceTitle}}</span>
+              </div>
+            </a>
           </div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
       </div>
     </div>
+    <!-- 瀑布流布局 -->
+    <WaterFall />
   </div>
 </template>
 
-
 <script>
-import Swiper from "swiper"
-import "swiper/css/swiper.min.css"
+/* 引入lodash */
+import _ from "lodash";
+import Swiper from "swiper";
+import "swiper/css/swiper.min.css";
+import WaterFall from '../../components/WaterFall/WaterFall';
   export default {
-    mounted(){
-      this.$nextTick(() => {
-        //创建Swiper实例对象
-        new Swiper(".swiper-container", {
-          loop: true,
-          //分页器
-          pagination: {
-            el: ".swiper-pagination"
-          }
-        })
-      })
-    }
+    components: {WaterFall},
+    data(){
+      return {
+        navList: [],
+      }
+    },
+    async mounted(){
+      let result = await this.$API.getTopicNavData();
+      this.navList = result.data.navList;
+    },
+    computed: {
+      newNavList(){
+        return _.chunk(this.navList, 8);
+      }
+    },
+    methods: {
+      //搜索获取焦点
+      handleClickSkip(){
+        //跳转页面
+        this.$router.push({
+          path: 'search',
+          query: {from: 'topicId'}
+        });
 
+      }
+    },
+    watch: {
+      navList(){
+        this.$nextTick(() => {
+          new Swiper(".swiper-container", {
+            loop: true,
+            //分页器
+            pagination: {
+              el: ".swiper-pagination"
+            }
+          });
+        });
+      } 
+    }
   }
 </script>
 
 
-<style lang="stylus">
+
+<style lang="stylus" scoped>
 #trustBuyModule
   height 100%
   background-color #FAFAFA
@@ -95,57 +102,80 @@ import "swiper/css/swiper.min.css"
     .iconfont
       font-size 70px
       vertical-align middle
-  .middle-trustBuy
-    height 1000px
-    position relative
-    .bgtrust
+  //轮播图
+  .swiperTab-wrap
+    width 100%
+    padding 0 24px
+    box-sizing border-box
+    background url('https://m.you.163.com/topic/index/img/topic_title_bg.2373a140.png') no-repeat
+    background-size cover
+    overflow hidden
+    .swiperTab-title
       width 100%
-      height 800px
-    .trustBuy
-      position absolute
-      left 20px
-      top 80px
-      width 180px
-      height 100px
-    .goodWord
-      position absolute
-      left 220px
-      top 120px
-      color white
+      display flex
+      font-size 30px
+      color #fff
+      padding-top 68px
+      margin-bottom 24px
+      >img
+        width 130px
+        height 68px
+      span 
+        margin 28px 0 0 5px
+    //
     .swiper-container 
-      position absolute
-      left 20px
-      top 200px
-      width 840px
-      height 700px
-      border-radius 20px
-      background-color white
-      .swiper-wrapper
+      width 100%
+      height 100%
+      background-color #fff
+      border-radius 10px
+      padding-bottom 70px
+
+      .swiper-wrapper 
         width 100%
         height 100%
-        display flex
-        .swiper-slide
-          width 210px
+        .swiper-slide 
+          display flex
+          justify-content center
+          align-items flex-start
+          flex-wrap wrap
           height 100%
-          .swiper-item
-            width 210px
-            height 100%
+
+          .link-to-pro
+            width 25%
             text-align center
-            padding 40px 20px
-            box-sizing border-box
-            >a
-              color #000
-              .image
-                margin-top 15px
-                img 
-                  width 180px
-                  height 180px
-              .desctext
-                font-size 22px
-                color #888
-                line-height 50px  
+            padding-top 36px
+            .pro-container
+              width 100%
+              height 120px
+              >img 
+                width 120px
+                height 120px
+                display inline
+            .text
+              width 100%
+              height 100%
+              line-height 35px
+              padding-top 8px
+              .text-title
+                font-size 28px
+                font-weight bold
+                color #333
+              .text-desc
+                font-size 24px
+                color #999
+
+      //
+      .swiper-pagination
+        position absolute
+        bottom 28px
+
       /* 深度选择器的使用 */
       /deep/.swiper-pagination 
-        >span.swiper-pagination-bullet-active 
+        >span.swiper-pagination-bullet
+          width 40px
+          height 5px
           background-color red
+  //瀑布流布局
+   
+  
 </style>

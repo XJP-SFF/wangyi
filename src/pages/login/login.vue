@@ -10,11 +10,11 @@
 		<img class="logo" src="http://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png"/>
 		<div class="loginMethods">
 			<div class="login">
-				<div class="phone">
+				<div class="phone" @click="handleLogin(1)">
 					<i class="iconfont icon-shouji1"></i>
 					<span>手机号快捷登录</span>
 				</div>
-				<div class="email">
+				<div class="email" @click="handleLogin(2)">
 					<i class="iconfont icon-youxiang2"></i>
 					<span>邮箱账号登录</span>
 				</div>
@@ -31,14 +31,32 @@
 			<i class="iconfont icon-sinaweibo"></i>
 			<span class="word">微博</span>
 		</div>
+		<!-- loginModule -->
+		<LoginModule @func="getMsgFormSon" :modeFlag="modeFlag"/>
 	</div>
 </template>
 
 <script>
+import LoginModule from '../../components/loginModule/loginModule'
 	export default {
+		components:{LoginModule},
 		data() {
 			return {
-				
+				modeFlag:1,
+				isShowloginMode:false,
+			}
+		},
+		methods:{
+			login(){
+
+			},
+			handleLogin(flag){
+				this.isShowloginMode = true;
+				this.modeFlag =(flag === 1) ? flag : flag;
+			},
+			//获取子组件传递给父组件的数据
+			getMsgFormSon(data){
+				this.isShowloginMode = data;
 			}
 		}
 	}
